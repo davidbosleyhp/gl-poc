@@ -30,7 +30,5 @@ export function divide(a: number, b: number): number {
     throw new Error("You can't divide by zero.");
   }
 
-  var bob;
-
   return a / b;
 }

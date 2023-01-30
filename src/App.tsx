@@ -1,6 +1,6 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   return (
@@ -25,12 +25,12 @@ function App() {
 
 export default App;
 
-export function divide(a: number, b: number) : number {
-     
+export function divide(a: number, b: number): number {
   if (b === 0) {
     throw new Error("You can't divide by zero.");
   }
 
-  return a / b;
+  var bob;
 
+  return a / b;
 }

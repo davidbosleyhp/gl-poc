@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import App, { divide } from "./App";
+import App, { add, divide } from "./App";
 
 test("renders learn react link", () => {
   render(<App />);
@@ -28,6 +28,18 @@ describe("divide function", () => {
       // Arrange: check that the function call
       // will reult in the given error.
       expect(() => divide(1, 0)).toThrow(expectedError);
+    });
+  });
+});
+
+describe("add function", () => {
+  describe("when given two integers", () => {
+    it("should return the result", () => {
+      const [a, b, expected] = [11, 3, 14];
+
+      const result = add(a, b);
+
+      expect(result).toEqual(expected);
     });
   });
 });

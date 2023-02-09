@@ -1,27 +1,36 @@
 import React from 'react'
-import logo from './logo.svg'
 import './App.css'
 import ErrorBoundary from './components/ErrorBoundary'
+import SiteList from './components/SiteList'
+import {
+    createBrowserRouter,
+    createRoutesFromElements,
+    Route,
+    RouterProvider,
+} from 'react-router-dom'
+import Home from './pages/Home'
+import About from './pages/About'
+import NotFound from './pages/NotFound'
+
+// layouts
+import RootLayout from './layouts/RootLayout'
+
+const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route path="/" element={<RootLayout />}>
+            <Route index element={<Home />} />
+            <Route path="sites" element={<SiteList />} />
+            <Route path="about" element={<About />} />
+
+            <Route path="*" element={<NotFound />} />
+        </Route>
+    )
+)
 
 function App() {
     return (
         <ErrorBoundary>
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <p>
-                        Edit <code>src/App.tsx</code> and save to reload.
-                    </p>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Learn React for mysites
-                    </a>
-                </header>
-            </div>
+            <RouterProvider router={router} />
         </ErrorBoundary>
     )
 }

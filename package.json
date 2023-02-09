@@ -51,6 +51,7 @@
         ]
     },
     "devDependencies": {
+        "@svgr/webpack": "^6.2.1",
         "@babel/plugin-transform-modules-commonjs": "^7.20.11",
         "@typescript-eslint/eslint-plugin": "^5.49.0",
         "@typescript-eslint/parser": "^5.49.0",
@@ -62,5 +63,8 @@
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-sonarjs": "^0.18.0",
         "prettier": "^2.8.3"
+    },
+    "overrides": {
+        "@svgr/webpack": "$@svgr/webpack"
     }
 }

@@ -27,7 +27,6 @@
         "style:lint": "eslint '**/*.{js,jsx,ts,tsx}'",
         "style:prettier": "prettier --check '**/*.{js,jsx,ts,tsx}'",
         "make-pretty": "prettier --write '**/*.{js,jsx,ts,tsx}'",
-        "prepare": "husky install",
         "lint": "eslint"
     },
     "eslintConfig": {
@@ -35,11 +34,6 @@
             "react-app",
             "react-app/jest"
         ]
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "npm run lint src/*.tsx src/*.ts"
-        }
     },
     "jest": {
         "resetMocks": true
@@ -67,7 +61,6 @@
         "eslint-plugin-react": "^7.32.2",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-sonarjs": "^0.18.0",
-        "husky": "^8.0.3",
         "prettier": "^2.8.3"
     }
 }

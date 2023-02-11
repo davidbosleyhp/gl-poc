@@ -1,5 +1,5 @@
 import React from 'react'
-import { Site } from '../types/site'
+import { Site } from 'types/site'
 
 interface SiteLineProps {
     site: Site

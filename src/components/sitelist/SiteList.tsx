@@ -1,9 +1,9 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
-import { Site } from '../types/site'
-import Loader from './Loader'
-import SiteLine from './SiteLine'
-import './styles.css'
+import { Site } from 'types/site'
+import Loader from 'components/ui/Loader'
+import SiteLine from 'components/sitelist/SiteLine'
+import 'styles/styles.css'
 
 const SiteList = () => {
     const [isLoading, setIsLoading] = React.useState(true)

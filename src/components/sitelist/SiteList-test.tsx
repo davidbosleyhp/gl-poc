@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
-import SiteList from './SiteList'
+import SiteList from 'components/sitelist/SiteList'
 
 describe('SiteList', () => {
     test('Displays sites', () => {

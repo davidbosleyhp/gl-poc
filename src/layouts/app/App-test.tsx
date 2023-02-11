@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import App, { add, divide } from './App'
+import App, { add, divide } from 'layouts/app/App'
 
 test('renders my sites', () => {
     render(<App />)

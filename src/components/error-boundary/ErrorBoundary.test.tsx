@@ -22,6 +22,12 @@ class CreateErrorTester extends React.Component<CreateErrorTesterProps> {
     }
 }
 
+// describe('ErrorBoundary', () => {
+//     test('bypass', () => {
+//         console.log('bypass tests')
+//     })
+// })
+
 describe('ErrorBoundary', () => {
     test('errors are shown on page', () => {
         render(

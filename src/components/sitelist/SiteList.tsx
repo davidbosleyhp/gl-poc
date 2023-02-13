@@ -23,9 +23,13 @@ const SiteList = () => {
     })
 
     return isLoading ? (
-        <Loader />
+        <div>
+            <h1>Your Sites</h1>
+            <Loader />
+        </div>
     ) : (
         <div className="sitesList">
+            <h1>Your Sites</h1>
             {sites.map((site) => (
                 <SiteLine key={site.id} site={site} />
             ))}

@@ -1,19 +1,19 @@
 import React from 'react'
-import './App.css'
-import ErrorBoundary from './components/ErrorBoundary'
-import SiteList from './components/SiteList'
+import 'layouts/app/App.css'
+import ErrorBoundary from 'components/error-boundary'
+import SiteList from 'components/sitelist'
 import {
     createBrowserRouter,
     createRoutesFromElements,
     Route,
     RouterProvider,
 } from 'react-router-dom'
-import Home from './pages/Home'
-import About from './pages/About'
-import NotFound from './pages/NotFound'
+import Home from 'pages/home'
+import About from 'pages/about'
+import NotFound from 'pages/not-found'
 
 // layouts
-import RootLayout from './layouts/RootLayout'
+import RootLayout from 'layouts/RootLayout'
 
 const router = createBrowserRouter(
     createRoutesFromElements(

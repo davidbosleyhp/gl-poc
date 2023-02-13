@@ -1,5 +1,5 @@
 import React from 'react'
-import SiteList from '../components/SiteList'
+import SiteList from 'components/sitelist'
 
 export default function SitesPage() {
     return (

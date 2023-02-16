@@ -1,5 +1,4 @@
 import React from 'react'
-import 'layouts/app/App.css'
 import ErrorBoundary from 'components/error-boundary'
 import SiteList from 'components/sitelist'
 import {

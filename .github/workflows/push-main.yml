@@ -27,7 +27,8 @@ jobs:
         # list of docker images
         images: |
           davebosleyhpe/glpoc
-        # generate Docker tags based on following events/attributes
+        # generate Docker tags based on following events/attributes.
+        # TODO: Find way to get version in here
         tags: |
           type=schedule
           type=ref,event=branch

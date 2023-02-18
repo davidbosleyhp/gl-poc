@@ -1,20 +1,17 @@
+import { Main } from 'grommet'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 const NotFound = () => {
     return (
-        <div>
+        <Main>
             <h2>Page not found!</h2>
-            <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium deserunt quo
-                exercitationem soluta voluptatum quidem eum perferendis aliquam quisquam pariatur,
-                minus vitae qui modi consectetur praesentium error sint ipsa voluptates.
-            </p>
+            <p>This page does npt exist or access is denied. Please contact administrator.</p>
 
             <p>
                 Go to the <Link to="/">Homepage</Link>
             </p>
-        </div>
+        </Main>
     )
 }
 

@@ -3,7 +3,6 @@ import React, { useEffect } from 'react'
 import { Site } from 'types/site'
 import Loader from 'components/ui/Loader'
 import SiteLine from 'components/sitelist/SiteLine'
-import 'components/sitelist/SiteLine.css'
 
 const SiteList = () => {
     const [isLoading, setIsLoading] = React.useState(true)
@@ -29,7 +28,6 @@ const SiteList = () => {
         </div>
     ) : (
         <div className="sitesList">
-            <h1>Your Sites</h1>
             {sites.map((site) => (
                 <SiteLine key={site.id} site={site} />
             ))}

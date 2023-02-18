@@ -1,36 +1,38 @@
-import React from 'react'
-import 'layouts/app/App.css'
 import ErrorBoundary from 'components/error-boundary'
-import SiteList from 'components/sitelist'
-import {
-    createBrowserRouter,
-    createRoutesFromElements,
-    Route,
-    RouterProvider,
-} from 'react-router-dom'
-import Home from 'pages/home'
-import About from 'pages/about'
-import NotFound from 'pages/not-found'
-
-// layouts
-import RootLayout from 'layouts/RootLayout'
-
-const router = createBrowserRouter(
-    createRoutesFromElements(
-        <Route path="/" element={<RootLayout />}>
-            <Route index element={<Home />} />
-            <Route path="sites" element={<SiteList />} />
-            <Route path="about" element={<About />} />
-
-            <Route path="*" element={<NotFound />} />
-        </Route>
-    )
-)
+import React, { useState } from 'react'
+import { Footer, Grommet, Text } from 'grommet'
+import { hpe } from 'grommet-theme-hpe'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import AppBar from 'components/ui/AppBar'
+import Home from 'pages/Home'
+import About from 'pages/About'
+import NotFound from 'pages/NotFound'
+import SitesPage from 'pages/SitesPage'
+import Breadcrumbs from 'components/ui/breadcrumbs'
 
 function App() {
+    const [dark, setDark] = useState(false)
+
     return (
         <ErrorBoundary>
-            <RouterProvider router={router} />
+            <Grommet className="root-layout" theme={hpe} full themeMode={dark ? 'dark' : 'light'}>
+                <Router>
+                    <AppBar dark={dark} setDark={setDark} />
+                    <Breadcrumbs />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/home" element={<Home />} />
+                        <Route path="/sites" element={<SitesPage />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path={`*`} element={<NotFound />} />
+                    </Routes>
+                    <Footer background="light-4" justify="center" pad="small">
+                        <Text textAlign="center" size="small">
+                            © 2023 Copyright Hewlett Packard Enterprise
+                        </Text>
+                    </Footer>
+                </Router>
+            </Grommet>
         </ErrorBoundary>
     )
 }

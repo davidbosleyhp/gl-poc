@@ -19,8 +19,8 @@ const AppBar: React.FC<AppBarProps> = ({ dark, setDark }) => {
             <Text size="large">My Sites</Text>
             <Nav direction="row">
                 <Anchor label="Home" href="/" />
-                <Anchor label="Sites" href="sites" />
-                <Anchor label="About" href="about" />
+                <Anchor label="Sites" href="/sites" />
+                <Anchor label="About" href="/about" />
             </Nav>
             <Box direction="row" align="center" gap="small">
                 <Avatar src={gravatarSrc} />

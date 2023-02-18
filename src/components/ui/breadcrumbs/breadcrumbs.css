@@ -1,0 +1,7 @@
+.breadcrumb-not-active {
+    color: grey;    
+}
+
+.breadcrumb-active {
+    color: blue;
+}

@@ -1,4 +1,4 @@
-import axios from 'axios'
+//import axios from 'axios'
 import React, { useEffect } from 'react'
 import { Site } from 'types/site'
 import Loader from 'components/ui/Loader'
@@ -11,10 +11,20 @@ const SiteList = () => {
     useEffect(() => {
         if (isLoading) {
             const getSites = async () => {
-                const result = await axios(`http://localhost:5163/sites`)
+                /* axios version
+                //const result = await axios(`http://localhost:5163/api/sites`)
+                const result = await axios('/api/sites', {
+                    headers: { accepts: 'application/json' },
+                })
                 console.log(result.data)
+                 setSites(result.data)
+                setIsLoading(false)
+                */
+                const result = await fetch(`/api/sites`, {
+                    headers: { accept: 'application/json' },
+                })
 
-                setSites(result.data)
+                setSites(await result.json())
                 setIsLoading(false)
             }
             getSites()

@@ -11,9 +11,10 @@ const SiteList = () => {
     useEffect(() => {
         if (isLoading) {
             const getSites = async () => {
-                const result = await axios(`http://localhost:5163/sites`)
+                const result = await axios(process.env.REACT_APP_API_URL + `/api/sites`, {
+                    headers: { accepts: 'application/json' },
+                })
                 console.log(result.data)
-
                 setSites(result.data)
                 setIsLoading(false)
             }

@@ -20,11 +20,10 @@ const AppBar: React.FC<AppBarProps> = ({ dark, setDark }) => {
             <Nav direction="row">
                 <Anchor label="Home" href="/" />
                 <Anchor label="Sites" href="/sites" />
-                <Anchor label="About" href="/about" />
             </Nav>
             <Box direction="row" align="center" gap="small">
                 <Avatar src={gravatarSrc} />
-                <Anchor color="white" href="https://github.com/ShimiSun">
+                <Anchor color="white" href="/profile/personalInfo">
                     Shimi Sun
                 </Anchor>
             </Box>

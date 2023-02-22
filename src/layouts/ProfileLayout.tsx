@@ -4,17 +4,15 @@ import { hpe } from 'grommet-theme-hpe'
 import { Outlet } from 'react-router-dom'
 
 //components
-import AppBar from 'components/ui/AppBar'
-import Breadcrumbs from 'components/ui/Breadcrumbs'
-
 //pages
+import SideBar from 'components/ui/SideBar'
 
 export default function MainLayout() {
-    const [dark, setDark] = useState(false)
+    const [dark] = useState(false)
     return (
-        <Grommet className="main-layout" theme={hpe} full themeMode={dark ? 'dark' : 'light'}>
-            <AppBar dark={dark} setDark={setDark} />
-            <Breadcrumbs />
+        <Grommet className="profile-layout" theme={hpe} full themeMode={dark ? 'dark' : 'light'}>
+            <SideBar />
+
             <Main>
                 <Outlet />
             </Main>

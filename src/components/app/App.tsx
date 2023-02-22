@@ -3,8 +3,8 @@ import ErrorBoundary from 'components/error-boundary/ErrorBoundary'
 import MainLayout from 'layouts/MainLayout'
 import SitesPage from 'pages/SitesPage'
 import SitesError from 'components/sitelist/SitesError'
-import { Home } from 'grommet-icons'
 import ProfileLayout from 'layouts/ProfileLayout'
+import Home from 'pages/Home'
 import About from 'pages/About'
 import NotFound from 'pages/NotFound'
 import {
@@ -17,10 +17,12 @@ import PersonalInfo from 'pages/PersonalInfo'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<MainLayout />}>
-            <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="sites" element={<SitesPage />} errorElement={<SitesError />} />
+        <Route>
+            <Route path="/" element={<MainLayout />}>
+                <Route path="home" element={<Home />} />
+                <Route path="about" element={<About />} />
+                <Route path="sites" element={<SitesPage />} errorElement={<SitesError />} />
+            </Route>
             <Route path="profile" element={<ProfileLayout />}>
                 <Route path="personalInfo" element={<PersonalInfo />} />
             </Route>

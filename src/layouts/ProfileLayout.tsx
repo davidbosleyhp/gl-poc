@@ -12,7 +12,6 @@ export default function MainLayout() {
     return (
         <Grommet className="profile-layout" theme={hpe} full themeMode={dark ? 'dark' : 'light'}>
             <SideBar />
-
             <Main>
                 <Outlet />
             </Main>

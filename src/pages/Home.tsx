@@ -1,10 +1,10 @@
 import React from 'react'
-import { Grid, PageHeader, PageContent, Main } from 'grommet'
+import { Box, Grid, PageHeader, PageContent, Main } from 'grommet'
 import CardTemplate from 'components/ui/CardTemplate'
 
 export default function Home() {
     return (
-        <Main className="home">
+        <Box className="home">
             <PageHeader title="Home Page" />
             <p>Welcome to MySites!</p>
             <br />
@@ -16,6 +16,6 @@ export default function Home() {
                     <CardTemplate title={'Card 3'} />
                 </Grid>
             </PageContent>
-        </Main>
+        </Box>
     )
 }

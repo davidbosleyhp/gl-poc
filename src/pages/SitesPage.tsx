@@ -1,12 +1,12 @@
 import React from 'react'
 import SiteList from 'components/sitelist'
-import { Main, PageHeader } from 'grommet'
+import { Box, PageHeader } from 'grommet'
 
 export default function SitesPage() {
     return (
-        <Main>
+        <Box>
             <PageHeader title=" Your Sites" />
             <SiteList />
-        </Main>
+        </Box>
     )
 }

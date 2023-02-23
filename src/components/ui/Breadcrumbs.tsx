@@ -1,22 +1,30 @@
+import { Anchor, Box } from 'grommet'
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+//import { RouteObject } from 'react-router-dom'
+import useBreadcrumbs, { BreadcrumbsRoute } from 'use-react-router-breadcrumbs'
 
-export default function Breadcrumbs() {
-    const location = useLocation()
+const routes: BreadcrumbsRoute[] = [
+    { index: true, breadcrumb: 'Home' },
+    { path: '/about', breadcrumb: 'About' },
+    { path: '/sites', breadcrumb: 'Sites' },
+    { path: '*', breadcrumb: 'Page Not Found' },
+]
 
-    let currentLink = ''
-    const crumbs = location.pathname
-        .split('/')
-        .filter((crumb) => crumb !== '')
-        .map((crumb) => {
-            currentLink += `/${crumb}`
+function Breadcrumbs() {
+    const breadcrumbs = useBreadcrumbs(routes)
 
-            return (
-                <div className="crumb" key={crumb}>
-                    <Link to={currentLink}>{crumb}</Link>
-                </div>
-            )
-        })
-
-    return <div className="breadcrumbs">{crumbs}</div>
+    return (
+        <Box direction="row">
+            {breadcrumbs.map(({ breadcrumb, match }, index) => (
+                <Box direction="row" key={index.toString()}>
+                    <Anchor href={match.pathname} margin="xxsmall">
+                        {breadcrumb}
+                    </Anchor>
+                    <Box>{index !== breadcrumbs.length - 1 && '/'}</Box>
+                </Box>
+            ))}
+        </Box>
+    )
 }
+
+export default Breadcrumbs

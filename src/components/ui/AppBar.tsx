@@ -1,6 +1,6 @@
 import React from 'react'
-import { Anchor, Avatar, Box, Button, Header, Heading, Nav } from 'grommet'
-import { Hpe, Login, Moon, Sun, User } from 'grommet-icons'
+import { Anchor, Box, Button, Header, Heading, Nav } from 'grommet'
+import { Hpe, Moon, Sun, User } from 'grommet-icons'
 import { UserSession } from 'types/UserSession'
 
 interface AppBarProps {
@@ -28,7 +28,7 @@ const AppBar: React.FC<AppBarProps> = ({ dark, setDark, userSession }) => {
             </Box>
             <Box direction="row" align="right" gap="small">
                 <Nav direction="row">
-                    <Anchor label="Home" href="/" />
+                    <Anchor label="Home" href="/" aria-label="Home" />
                     <Anchor label="Sites" href="/sites" />
                     <Anchor label="About" href="/about" />
                     {userSession !== null ? (

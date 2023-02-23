@@ -1,12 +1,12 @@
-import React, { useContext, useState } from 'react'
-import { Grommet, Footer, Main, Text } from 'grommet'
-import { hpe, backgrounds } from 'grommet-theme-hpe'
+import React, { useState } from 'react'
+import { Grommet, Footer, Main, Text, grommet } from 'grommet'
+import { hpe } from 'grommet-theme-hpe'
 import { Outlet } from 'react-router-dom'
 
 //components
 import AppBar from 'components/ui/AppBar'
 import Breadcrumbs from 'components/ui/Breadcrumbs'
-import { UserSession } from 'types/UserSession'
+//import { UserSession } from 'types/UserSession'
 
 //pages
 
@@ -26,7 +26,7 @@ export default function MainLayout() {
         <Grommet
             full
             className="main-layout"
-            theme={hpe}
+            theme={grommet}
             themeMode={dark ? 'dark' : 'light'}
             background="datawave-white-4"
             // background="linear-gradient(102.77deg, #865ED6 -9.18%, #18BAB9 209.09%)"

@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import { Anchor, Box, Button, Header, Heading, Nav } from 'grommet'
-import { Hpe, Moon, Sun, User } from 'grommet-icons'
-import { UserSession } from 'types/UserSession'
+import { Hpe, Logout, Moon, Sun, User } from 'grommet-icons'
+import { LoggedInUser } from 'types/LoggedInUser'
 
 interface AppBarProps {
     dark: boolean
     setDark: React.Dispatch<React.SetStateAction<boolean>>
-    userSession: UserSession | null
+    user: LoggedInUser | null
+    setUser: Dispatch<SetStateAction<LoggedInUser | null>>
 }
-const AppBar: React.FC<AppBarProps> = ({ dark, setDark, userSession }) => {
+
+const loggedInUser: LoggedInUser = {
+    id: 1000,
+    name: 'Saroj Ekka',
+    thumbnail: '//s.gravatar.com/avatar/b226da5c619b18b44eb95c30be393953?s=80',
+}
+const AppBar: React.FC<AppBarProps> = ({ dark, setDark, user, setUser }) => {
     return (
         <Header
             className="App-header"
@@ -26,17 +33,32 @@ const AppBar: React.FC<AppBarProps> = ({ dark, setDark, userSession }) => {
                     My Sites
                 </Heading>
             </Box>
-            <Box direction="row" align="right" gap="small">
-                <Nav direction="row">
+            <Box direction="row" align="right" gap="small" pad="small">
+                <Nav direction="row" align="vertical">
                     <Anchor label="Home" href="/" aria-label="Home" />
                     <Anchor label="Sites" href="/sites" />
                     <Anchor label="About" href="/about" />
-                    {userSession !== null ? (
-                        <Anchor color="white" href="/profile/personalInfo">
-                            {userSession.user.name}
-                        </Anchor>
+                    {user !== null ? (
+                        <Box direction="row" gap="small" pad="small">
+                            <Anchor color="white" href="/profile/personalInfo">
+                                {user.name}
+                            </Anchor>
+                            <Button
+                                icon={<Logout />}
+                                tip="LogOut"
+                                label="LogOut"
+                                onClick={() => setUser(null)}
+                            />
+                        </Box>
                     ) : (
-                        <Button icon={<User />} tip="Login" />
+                        <Box>
+                            <Button
+                                icon={<User />}
+                                tip="Login"
+                                label="Login"
+                                onClick={() => setUser(loggedInUser)}
+                            />
+                        </Box>
                     )}
                 </Nav>
                 <Button

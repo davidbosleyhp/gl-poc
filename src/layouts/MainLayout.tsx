@@ -1,27 +1,18 @@
 import React, { useState } from 'react'
 import { Grommet, Footer, Main, Text, grommet } from 'grommet'
-import { hpe } from 'grommet-theme-hpe'
+//import { hpe } from 'grommet-theme-hpe'
 import { Outlet } from 'react-router-dom'
 
 //components
 import AppBar from 'components/ui/AppBar'
 import Breadcrumbs from 'components/ui/Breadcrumbs'
-//import { UserSession } from 'types/UserSession'
+import { LoggedInUser } from 'types/LoggedInUser'
+//import { LoggedInUser } from 'types/LoggedInUser'
 
 //pages
-
-// const userSession: UserSession = {
-//     user: {
-//         id: 1000,
-//         name: 'Saroj Ekka',
-//         thumbnail: '//s.gravatar.com/avatar/b226da5c619b18b44eb95c30be393953?s=80',
-//     },
-// }
-
-//const userSession: UserSession | null = null
-
 export default function MainLayout() {
     const [dark, setDark] = useState(false)
+    const [user, setUser] = useState<LoggedInUser | null>(null)
     return (
         <Grommet
             full
@@ -31,7 +22,7 @@ export default function MainLayout() {
             background="datawave-white-4"
             // background="linear-gradient(102.77deg, #865ED6 -9.18%, #18BAB9 209.09%)"
         >
-            <AppBar dark={dark} setDark={setDark} userSession={null} />
+            <AppBar dark={dark} setDark={setDark} user={user} setUser={setUser} />
             <Main pad="small">
                 <Breadcrumbs />
                 <Outlet />

@@ -1,6 +1,6 @@
 import { Anchor, Box } from 'grommet'
 import React from 'react'
-import { Site } from 'types/site'
+import { Site } from 'types/Site'
 
 interface SiteLineProps {
     site: Site
@@ -8,7 +8,7 @@ interface SiteLineProps {
 
 const SiteLine = (props: SiteLineProps) => {
     return (
-        <Box pad="medium" background="brand" className="siteLine">
+        <Box pad="small" background={{ color: 'brand', opacity: true }} className="siteLine">
             <Anchor href="/" label={props.site.name} />
         </Box>
     )

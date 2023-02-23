@@ -1,11 +1,19 @@
-import { Box, PageHeader } from 'grommet'
+import { Page, PageContent, PageHeader, Paragraph } from 'grommet'
 import React from 'react'
 
 export default function About() {
     return (
-        <Box className="about">
-            <PageHeader title="About MySites" />
-            <p>It is cool about page</p>
-        </Box>
+        <Page className="about">
+            <PageHeader
+                title="About MySites"
+                subtitle="A product of HPE."
+                size="small"
+                a11yTitle="About MySites"
+                pad="xsmall"
+            />
+            <PageContent>
+                <Paragraph>This section describe about My Sites</Paragraph>
+            </PageContent>
+        </Page>
     )
 }

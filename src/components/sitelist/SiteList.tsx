@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Site } from 'types/site'
+import { Site } from 'types/Site'
 import Loader from 'components/ui/Loader'
 import SiteLine from 'components/sitelist/SiteLine'
 import { Box } from 'grommet'
@@ -28,7 +28,7 @@ const SiteList = () => {
             <Loader />
         </Box>
     ) : (
-        <Box gap="small" border={{ side: 'between', size: 'large' }}>
+        <Box gap="xxxsmall" border={{ side: 'between', size: 'small' }}>
             {sites.map((site: Site) => (
                 <SiteLine key={site.id} site={site} />
             ))}

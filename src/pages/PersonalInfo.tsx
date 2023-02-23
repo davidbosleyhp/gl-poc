@@ -1,12 +1,12 @@
-import { Box, PageContent, PageHeader } from 'grommet'
+import { Page, PageContent, PageHeader } from 'grommet'
 import React from 'react'
 
 function PersonalInfo() {
     return (
-        <Box>
-            <PageHeader>Profile</PageHeader>
+        <Page>
+            <PageHeader title="Profile" a11yTitle="Profile" size="small" pad="xsmall" />
             <PageContent>This is Profile Page</PageContent>
-        </Box>
+        </Page>
     )
 }
 

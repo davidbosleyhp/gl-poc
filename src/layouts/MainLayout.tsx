@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Grommet, Footer, Main, Text, grommet } from 'grommet'
-//import { hpe } from 'grommet-theme-hpe'
+import { hpe, backgrounds } from 'grommet-theme-hpe'
 import { Outlet } from 'react-router-dom'
 
 //components
@@ -13,14 +13,15 @@ import { LoggedInUser } from 'types/LoggedInUser'
 export default function MainLayout() {
     const [dark, setDark] = useState(false)
     const [user, setUser] = useState<LoggedInUser | null>(null)
+    console.log(backgrounds)
+
     return (
         <Grommet
             full
             className="main-layout"
-            theme={grommet}
+            theme={hpe}
             themeMode={dark ? 'dark' : 'light'}
-            background="datawave-white-4"
-            // background="linear-gradient(102.77deg, #865ED6 -9.18%, #18BAB9 209.09%)"
+            background="datawave-multi-1"
         >
             <AppBar dark={dark} setDark={setDark} user={user} setUser={setUser} />
             <Main pad="small">

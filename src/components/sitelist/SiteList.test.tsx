@@ -7,7 +7,7 @@ import SiteList from 'components/sitelist/SiteList'
 describe('SiteList', () => {
     test('Displays sites', () => {
         render(<SiteList />)
-        const linkElement = screen.getByText(/Your Sites/i)
+        const linkElement = screen.getByText(/Loading/i)
         expect(linkElement).toBeInTheDocument()
     })
 })

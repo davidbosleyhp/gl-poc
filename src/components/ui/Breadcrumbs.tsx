@@ -1,4 +1,4 @@
-import { Anchor, Box } from 'grommet'
+import { Anchor, Box, Paragraph } from 'grommet'
 import React from 'react'
 //import { RouteObject } from 'react-router-dom'
 import useBreadcrumbs, { BreadcrumbsRoute } from 'use-react-router-breadcrumbs'
@@ -14,13 +14,13 @@ function Breadcrumbs() {
     const breadcrumbs = useBreadcrumbs(routes)
 
     return (
-        <Box direction="row">
+        <Box direction="row" alignContent="">
             {breadcrumbs.map(({ breadcrumb, match }, index) => (
                 <Box direction="row" key={index.toString()}>
-                    <Anchor href={match.pathname} margin="xxsmall">
+                    <Anchor size="small" href={match.pathname} margin="xxsmall">
                         {breadcrumb}
                     </Anchor>
-                    <Box>{index !== breadcrumbs.length - 1 && '/'}</Box>
+                    <Box alignSelf="center">{index !== breadcrumbs.length - 1 && '>'}</Box>
                 </Box>
             ))}
         </Box>

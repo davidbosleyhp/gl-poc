@@ -14,6 +14,7 @@ import {
     RouterProvider,
 } from 'react-router-dom'
 import PersonalInfo from 'pages/PersonalInfo'
+import { UserContextProvider } from 'contexts/UserContext'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -31,11 +32,13 @@ const router = createBrowserRouter(
     )
 )
 
-function App() {
+const App = () => {
     return (
-        <ErrorBoundary>
-            <RouterProvider router={router} />;
-        </ErrorBoundary>
+        <UserContextProvider>
+            <ErrorBoundary>
+                <RouterProvider router={router} />;
+            </ErrorBoundary>
+        </UserContextProvider>
     )
 }
 

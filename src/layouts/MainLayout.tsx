@@ -1,19 +1,14 @@
 import React, { useState } from 'react'
-import { Grommet, Footer, Main, Text, grommet } from 'grommet'
-import { hpe, backgrounds } from 'grommet-theme-hpe'
+import { Grommet, Footer, Main, Text } from 'grommet'
+import { hpe } from 'grommet-theme-hpe'
 import { Outlet } from 'react-router-dom'
 
 //components
 import AppBar from 'components/ui/AppBar'
 import Breadcrumbs from 'components/ui/Breadcrumbs'
-import { LoggedInUser } from 'types/LoggedInUser'
-//import { LoggedInUser } from 'types/LoggedInUser'
 
-//pages
-export default function MainLayout() {
+const MainLayout = () => {
     const [dark, setDark] = useState(false)
-    const [user, setUser] = useState<LoggedInUser | null>(null)
-    console.log(backgrounds)
 
     return (
         <Grommet
@@ -23,7 +18,7 @@ export default function MainLayout() {
             themeMode={dark ? 'dark' : 'light'}
             background="datawave-multi-1"
         >
-            <AppBar dark={dark} setDark={setDark} user={user} setUser={setUser} />
+            <AppBar dark={dark} setDark={setDark} />
             <Main pad="small">
                 <Breadcrumbs />
                 <Outlet />
@@ -36,3 +31,5 @@ export default function MainLayout() {
         </Grommet>
     )
 }
+
+export default MainLayout

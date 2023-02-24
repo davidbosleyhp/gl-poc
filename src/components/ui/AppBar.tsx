@@ -1,21 +1,24 @@
-import React, { Dispatch, SetStateAction } from 'react'
+import React from 'react'
 import { Anchor, Box, Button, Header, Heading, Nav } from 'grommet'
 import { Hpe, Logout, Moon, Sun, User } from 'grommet-icons'
-import { LoggedInUser } from 'types/LoggedInUser'
+import { useCurrentUser } from 'contexts/UserContext'
+import { ILoggedInUser } from 'types/LoggedInUser'
 
 interface AppBarProps {
     dark: boolean
     setDark: React.Dispatch<React.SetStateAction<boolean>>
-    user: LoggedInUser | null
-    setUser: Dispatch<SetStateAction<LoggedInUser | null>>
 }
 
-const loggedInUser: LoggedInUser = {
+const loggedInUser: ILoggedInUser = {
     id: 1000,
     name: 'Saroj Ekka',
     thumbnail: '//s.gravatar.com/avatar/b226da5c619b18b44eb95c30be393953?s=80',
 }
-const AppBar: React.FC<AppBarProps> = ({ dark, setDark, user, setUser }) => {
+
+const AppBar: React.FC<AppBarProps> = ({ dark, setDark }) => {
+    const currentUser = useCurrentUser()
+    console.log('AppBar:')
+    console.log(currentUser.user)
     return (
         <Header
             className="App-header"
@@ -38,16 +41,16 @@ const AppBar: React.FC<AppBarProps> = ({ dark, setDark, user, setUser }) => {
                     <Anchor label="Home" href="/" aria-label="Home" />
                     <Anchor label="Sites" href="/sites" />
                     <Anchor label="About" href="/about" />
-                    {user !== null ? (
+                    {currentUser != null && currentUser.user !== null ? (
                         <Box direction="row" gap="small" pad="small">
                             <Anchor color="white" href="/profile/personalInfo">
-                                {user.name}
+                                {currentUser.user.name}
                             </Anchor>
                             <Button
                                 icon={<Logout />}
                                 tip="LogOut"
                                 label="LogOut"
-                                onClick={() => setUser(null)}
+                                onClick={() => currentUser.saveUser(null)}
                             />
                         </Box>
                     ) : (
@@ -56,7 +59,7 @@ const AppBar: React.FC<AppBarProps> = ({ dark, setDark, user, setUser }) => {
                                 icon={<User />}
                                 tip="Login"
                                 label="Login"
-                                onClick={() => setUser(loggedInUser)}
+                                onClick={() => currentUser?.saveUser(loggedInUser)}
                             />
                         </Box>
                     )}

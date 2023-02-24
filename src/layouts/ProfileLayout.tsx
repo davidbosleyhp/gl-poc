@@ -6,12 +6,10 @@ import { Outlet } from 'react-router-dom'
 //components
 //pages
 import SideBar from 'components/ui/SideBar'
-import { LoggedInUser } from 'types/LoggedInUser'
 import AppBar from 'components/ui/AppBar'
 
 export default function MainLayout() {
     const [dark, setDark] = useState(false)
-    const [user, setUser] = useState<LoggedInUser | null>(null)
 
     return (
         <Grommet
@@ -21,7 +19,7 @@ export default function MainLayout() {
             themeMode={dark ? 'dark' : 'light'}
             background="datawave-multi-1"
         >
-            <AppBar dark={dark} setDark={setDark} user={user} setUser={setUser} />
+            <AppBar dark={dark} setDark={setDark} />
             <SideBar />
             <Main>
                 <Outlet />

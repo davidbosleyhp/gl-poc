@@ -9,7 +9,6 @@ import Breadcrumbs from 'components/ui/Breadcrumbs'
 
 const MainLayout = () => {
     const [dark, setDark] = useState(false)
-
     return (
         <Grommet
             full

@@ -1,4 +1,6 @@
-export interface ILoggedInUser {
+import { Dispatch, SetStateAction } from 'react'
+
+export type ILoggedInUser = {
     id: number
     name: string
     thumbnail: string
@@ -6,5 +8,5 @@ export interface ILoggedInUser {
 
 export type LoggedInUserContextType = {
     user: ILoggedInUser | null
-    saveUser: (user: ILoggedInUser | null) => void
+    setUser: Dispatch<SetStateAction<ILoggedInUser | null>>
 }

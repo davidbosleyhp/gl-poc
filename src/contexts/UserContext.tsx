@@ -1,37 +1,21 @@
-import React, { useContext } from 'react'
-import { createContext, useState } from 'react'
+import React, { createContext, ReactNode, useState } from 'react'
 import { ILoggedInUser, LoggedInUserContextType } from 'types/LoggedInUser'
 
-export const UserContext = createContext<LoggedInUserContextType | null>(null)
+const defaultLoggedInUserContextType = {
+    user: null,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+    setUser: (user: ILoggedInUser) => {},
+} as LoggedInUserContextType
 
-export const useCurrentUser = () => {
-    const currentUserContext = useContext(UserContext)
+export const UserContext = createContext<LoggedInUserContextType>(defaultLoggedInUserContextType)
 
-    if (!currentUserContext) {
-        throw new Error('UserContext has to be used within <UserContext.Provider>')
-    }
-
-    return currentUserContext
+type UserContextProviderProps = {
+    children: ReactNode
 }
-
-export const UserContextProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
+export default function UserContextProvider({ children }: UserContextProviderProps) {
     const [user, setUser] = useState<ILoggedInUser | null>(null)
-    console.log('UserContext:')
-    console.log(user)
-    const saveUser = (user: ILoggedInUser | null) => {
-        if (user !== null) {
-            const newUser: ILoggedInUser = {
-                id: user.id,
-                name: user.name,
-                thumbnail: '',
-            }
-            setUser(newUser)
-        } else {
-            setUser(null)
-        }
-    }
 
-    return <UserContext.Provider value={{ user, saveUser }}>{children}</UserContext.Provider>
+    return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>
 }
 
 //export default UserContextProvider

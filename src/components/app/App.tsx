@@ -14,7 +14,7 @@ import {
     RouterProvider,
 } from 'react-router-dom'
 import PersonalInfo from 'pages/PersonalInfo'
-import { UserContextProvider } from 'contexts/UserContext'
+import UserContextProvider from 'contexts/UserContext'
 
 const router = createBrowserRouter(
     createRoutesFromElements(

@@ -1,8 +1,9 @@
-import axios from 'axios'
 import React, { useEffect } from 'react'
-import { Site } from 'types/site'
+import { Site } from 'types/Site'
 import Loader from 'components/ui/Loader'
 import SiteLine from 'components/sitelist/SiteLine'
+import { Box } from 'grommet'
+import axios from 'axios'
 
 const SiteList = () => {
     const [isLoading, setIsLoading] = React.useState(true)
@@ -23,16 +24,15 @@ const SiteList = () => {
     })
 
     return isLoading ? (
-        <div>
-            <h1>Your Sites</h1>
+        <Box>
             <Loader />
-        </div>
+        </Box>
     ) : (
-        <div className="sitesList">
-            {sites.map((site) => (
+        <Box gap="xxxsmall" border={{ side: 'between', size: 'small' }}>
+            {sites.map((site: Site) => (
                 <SiteLine key={site.id} site={site} />
             ))}
-        </div>
+        </Box>
     )
 }
 

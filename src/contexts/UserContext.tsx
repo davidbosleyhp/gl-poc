@@ -26,6 +26,8 @@ export const UserContextProvider: React.FC<React.PropsWithChildren> = ({ childre
                 thumbnail: '',
             }
             setUser(newUser)
+        } else {
+            setUser(null)
         }
     }
 

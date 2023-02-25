@@ -9,4 +9,5 @@ export type LoggedInUserContextType = {
     //setUser: Dispatch<SetStateAction<ILoggedInUser | null>>
     signIn: (user: ILoggedInUser) => Promise<void>
     signOut: () => Promise<void>
+    loading: boolean
 }

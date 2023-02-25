@@ -1,4 +1,12 @@
-import React, { createContext, ReactNode, useContext, useState } from 'react'
+import React, {
+    createContext,
+    ReactNode,
+    useCallback,
+    useContext,
+    useEffect,
+    useMemo,
+    useState,
+} from 'react'
 import { ILoggedInUser, LoggedInUserContextType } from 'types/LoggedInUser'
 
 // const defaultLoggedInUserContextType = {
@@ -15,35 +23,49 @@ type UserContextProviderProps = {
 
 export function UserContextProvider({ children }: UserContextProviderProps) {
     // Get the value from session sotrage.
-    const item = window.sessionStorage.getItem('loggedInUser')
-    const sessionStorageValue = item ? (JSON.parse(item) as ILoggedInUser) : null
+    //const item = window.sessionStorage.getItem('loggedInUser')
+    //const sessionStorageValue = item ? (JSON.parse(item) as ILoggedInUser) : null
 
-    // const sessionStorageValue: ILoggedInUser = JSON.parse(
-    //     sessionStorage.getItem('loggedInUser') as ILoggedInUser | null)
-    // )
+    const [user, setUser] = useState<ILoggedInUser | null>(null)
+    const [loading, setLoading] = useState<boolean>(true)
 
-    const [user, setUser] = useState<ILoggedInUser | null>(sessionStorageValue)
+    // Runs once when the component first mounts
+    useEffect(() => {
+        if (!user) {
+            fakeAsyncLoginCheck().then((activeUser) => {
+                if (activeUser) {
+                    console.log('fake async login check called')
+                    setUser(activeUser)
+                    setLoading(false)
+                } else {
+                    setLoading(false)
+                }
+            })
+        }
+    })
 
-    const signIn = async (user: ILoggedInUser): Promise<void> => {
+    const signIn = useCallback(async (user: ILoggedInUser): Promise<void> => {
         const result = await fakeAsyncLogin()
 
         if (result) {
             console.log('user has logged in')
 
             setUser(user)
+            //remove thsi server side api is used
             sessionStorage.setItem('loggedInUser', JSON.stringify(user))
         }
-    }
+    }, [])
 
-    const signOut = async (): Promise<void> => {
+    const signOut = useCallback(async (): Promise<void> => {
         const result = await fakeAsyncLogout()
 
         if (result) {
             console.log('The User has logged out')
             setUser(null)
-            sessionStorage.setItem('loggedInUser', JSON.stringify(null))
+            //remove thsi server side api is used
+            sessionStorage.removeItem('loggedInUser')
         }
-    }
+    }, [])
 
     /// Mock Async Login API call.
     // TODO: Replace with your actual login API Call code
@@ -62,12 +84,33 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         return new Promise((resolve, _reject) => {
             setTimeout(() => {
-                resolve('The user has successfully logged on the server')
+                resolve('The user has successfully logged out of the server')
             }, 300)
         })
     }
 
-    return <UserContext.Provider value={{ user, signIn, signOut }}>{children}</UserContext.Provider>
+    // Fixes the reload issue
+    const fakeAsyncLoginCheck = async (): Promise<ILoggedInUser | null> => {
+        const item = window.sessionStorage.getItem('loggedInUser')
+        const sessionStorageValue = item ? (JSON.parse(item) as ILoggedInUser) : null
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        return new Promise((resolve, _reject) => {
+            setTimeout(() => {
+                resolve(sessionStorageValue)
+            }, 300)
+        })
+    }
+
+    const memoValue = useMemo(
+        () => ({
+            user,
+            signIn,
+            signOut,
+            loading,
+        }),
+        [user, signIn, signOut, loading]
+    )
+    return <UserContext.Provider value={memoValue}>{children}</UserContext.Provider>
 }
 
 // context consumer hook

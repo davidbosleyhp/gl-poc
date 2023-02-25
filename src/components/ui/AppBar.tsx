@@ -1,6 +1,6 @@
 import React from 'react'
 import { Anchor, Box, Button, Header, Heading, Nav } from 'grommet'
-import { Hpe, Logout, Moon, Sun, User } from 'grommet-icons'
+import { Home, Hpe, Logout, Moon, Sun, User } from 'grommet-icons'
 import { useUserContext } from 'contexts/UserContext'
 import { ILoggedInUser } from 'types/LoggedInUser'
 import { useNavigate } from 'react-router-dom'
@@ -22,12 +22,7 @@ const AppBar: React.FC<AppBarProps> = ({ dark, setDark }) => {
     console.log(user)
     const navigate = useNavigate()
     return (
-        <Header
-            className="App-header"
-            background="brand"
-            pad={{ left: 'medium', right: 'small', vertical: 'small' }}
-            elevation="medium"
-        >
+        <Header className="App-header" background="brand" pad={{ left: 'medium', right: 'small' }}>
             <Anchor href="https://www.hpe.com" icon={<Hpe />} label="HPE" />
             <Box flex={false} direction="row" align="center" margin={{ left: 'small' }}>
                 <Heading
@@ -38,14 +33,14 @@ const AppBar: React.FC<AppBarProps> = ({ dark, setDark }) => {
                     My Sites
                 </Heading>
             </Box>
-            <Box direction="row" align="right" gap="small" pad="small">
-                <Nav direction="row" align="vertical">
-                    <Anchor label="Home" href="/" aria-label="Home" />
-                    {user !== null ? <Anchor label="Sites" href="/sites" /> : ''}
-                    <Anchor label="About" href="/about" />
+            <Box direction="row" gap="small" pad="small">
+                <Nav direction="row">
+                    <Anchor label="Home" href="/" aria-label="Home" alignSelf="center" />
+                    {user !== null ? <Anchor label="Sites" alignSelf="center" href="/sites" /> : ''}
+                    <Anchor label="About" href="/about" alignSelf="center" />
                     {user !== null ? (
-                        <Box direction="row" gap="small" pad="small">
-                            <Anchor color="white" href="/profile/personalInfo">
+                        <>
+                            <Anchor color="white" alignSelf="center" href="/profile/personalInfo">
                                 {user.name}
                             </Anchor>
                             <Button
@@ -57,16 +52,16 @@ const AppBar: React.FC<AppBarProps> = ({ dark, setDark }) => {
                                     navigate('/')
                                 }}
                             />
-                        </Box>
+                        </>
                     ) : (
-                        <Box>
+                        <>
                             <Button
                                 icon={<User />}
                                 tip="Login"
                                 label="Login"
                                 onClick={() => signIn(loggedInUser)}
                             />
-                        </Box>
+                        </>
                     )}
                 </Nav>
                 <Button

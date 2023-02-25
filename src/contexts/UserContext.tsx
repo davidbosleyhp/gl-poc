@@ -7,6 +7,7 @@ import React, {
     useMemo,
     useState,
 } from 'react'
+
 import { ILoggedInUser, LoggedInUserContextType } from 'types/LoggedInUser'
 
 // const defaultLoggedInUserContextType = {

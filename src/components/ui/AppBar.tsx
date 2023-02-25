@@ -3,6 +3,7 @@ import { Anchor, Box, Button, Header, Heading, Nav } from 'grommet'
 import { Hpe, Logout, Moon, Sun, User } from 'grommet-icons'
 import { useUserContext } from 'contexts/UserContext'
 import { ILoggedInUser } from 'types/LoggedInUser'
+import { useNavigate } from 'react-router-dom'
 
 interface AppBarProps {
     dark: boolean
@@ -19,6 +20,7 @@ const AppBar: React.FC<AppBarProps> = ({ dark, setDark }) => {
     const { user, signIn, signOut } = useUserContext()
     console.log('AppBar:')
     console.log(user)
+    const navigate = useNavigate()
     return (
         <Header
             className="App-header"
@@ -39,7 +41,7 @@ const AppBar: React.FC<AppBarProps> = ({ dark, setDark }) => {
             <Box direction="row" align="right" gap="small" pad="small">
                 <Nav direction="row" align="vertical">
                     <Anchor label="Home" href="/" aria-label="Home" />
-                    <Anchor label="Sites" href="/sites" />
+                    {user !== null ? <Anchor label="Sites" href="/sites" /> : ''}
                     <Anchor label="About" href="/about" />
                     {user !== null ? (
                         <Box direction="row" gap="small" pad="small">
@@ -50,7 +52,10 @@ const AppBar: React.FC<AppBarProps> = ({ dark, setDark }) => {
                                 icon={<Logout />}
                                 tip="LogOut"
                                 label="LogOut"
-                                onClick={() => signOut()}
+                                onClick={() => {
+                                    signOut()
+                                    navigate('/')
+                                }}
                             />
                         </Box>
                     ) : (

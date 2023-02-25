@@ -14,7 +14,7 @@ import {
     RouterProvider,
 } from 'react-router-dom'
 import PersonalInfo from 'pages/PersonalInfo'
-//import { UserContextProvider } from 'contexts/UserContext'
+import ProtectedRoute from 'components/ui/ProtectedRoute'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -22,7 +22,18 @@ const router = createBrowserRouter(
             <Route path="/" element={<MainLayout />}>
                 <Route path="/" element={<Home />} />
                 <Route path="about" element={<About />} />
-                <Route path="sites" element={<SitesPage />} errorElement={<SitesError />} />
+                if (user)
+                {
+                    <Route
+                        path="sites"
+                        element={
+                            <ProtectedRoute>
+                                <SitesPage />
+                            </ProtectedRoute>
+                        }
+                        errorElement={<SitesError />}
+                    />
+                }
             </Route>
             <Route path="profile" element={<ProfileLayout />}>
                 <Route path="personalInfo" element={<PersonalInfo />} />
@@ -34,11 +45,9 @@ const router = createBrowserRouter(
 
 const App = () => {
     return (
-        //<UserContextProvider>
         <ErrorBoundary>
             <RouterProvider router={router} />;
         </ErrorBoundary>
-        //</UserContextProvider>
     )
 }
 

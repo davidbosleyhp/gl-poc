@@ -1,7 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Anchor, Box, Button, Header, Heading, Nav } from 'grommet'
 import { Hpe, Logout, Moon, Sun, User } from 'grommet-icons'
-import { UserContext } from 'contexts/UserContext'
+import { useUserContext } from 'contexts/UserContext'
 import { ILoggedInUser } from 'types/LoggedInUser'
 
 interface AppBarProps {
@@ -16,7 +16,7 @@ const loggedInUser: ILoggedInUser = {
 }
 
 const AppBar: React.FC<AppBarProps> = ({ dark, setDark }) => {
-    const { user, setUser } = useContext(UserContext)
+    const { user, signIn, signOut } = useUserContext()
     console.log('AppBar:')
     console.log(user)
     return (
@@ -50,13 +50,7 @@ const AppBar: React.FC<AppBarProps> = ({ dark, setDark }) => {
                                 icon={<Logout />}
                                 tip="LogOut"
                                 label="LogOut"
-                                onClick={() =>
-                                    setUser({
-                                        id: 0,
-                                        name: '',
-                                        thumbnail: '',
-                                    })
-                                }
+                                onClick={() => signOut()}
                             />
                         </Box>
                     ) : (
@@ -65,7 +59,7 @@ const AppBar: React.FC<AppBarProps> = ({ dark, setDark }) => {
                                 icon={<User />}
                                 tip="Login"
                                 label="Login"
-                                onClick={() => setUser(loggedInUser)}
+                                onClick={() => signIn(loggedInUser)}
                             />
                         </Box>
                     )}

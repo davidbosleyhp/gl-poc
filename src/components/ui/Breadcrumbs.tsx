@@ -16,7 +16,7 @@ function Breadcrumbs() {
     return (
         <Box direction="row" alignContent="">
             {breadcrumbs.map(({ breadcrumb, match }, index) => (
-                <Box direction="row" key={index.toString()}>
+                <Box direction="row" key={'key_' + index.toString()}>
                     <Anchor size="small" href={match.pathname} margin="xxsmall">
                         {breadcrumb}
                     </Anchor>

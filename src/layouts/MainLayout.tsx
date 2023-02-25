@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Grommet, Footer, Main, Text } from 'grommet'
 import { hpe } from 'grommet-theme-hpe'
 import { Outlet } from 'react-router-dom'
@@ -6,18 +6,20 @@ import { Outlet } from 'react-router-dom'
 //components
 import AppBar from 'components/ui/AppBar'
 import Breadcrumbs from 'components/ui/Breadcrumbs'
+import { useThemeContext } from 'contexts/ThemeContext'
 
 const MainLayout = () => {
-    const [dark, setDark] = useState(false)
+    const { darkMode } = useThemeContext()
+
     return (
         <Grommet
             full
             className="main-layout"
             theme={hpe}
-            themeMode={dark ? 'dark' : 'light'}
-            background="datawave-multi-1"
+            themeMode={darkMode ? 'dark' : 'light'}
+            background={darkMode ? 'datawave-multi-1' : 'datawave-white-1'}
         >
-            <AppBar dark={dark} setDark={setDark} />
+            <AppBar />
             <Main pad="small">
                 <Breadcrumbs />
                 <Outlet />

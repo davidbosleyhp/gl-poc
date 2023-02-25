@@ -10,12 +10,6 @@ import React, {
 
 import { ILoggedInUser, LoggedInUserContextType } from 'types/LoggedInUser'
 
-// const defaultLoggedInUserContextType = {
-//     user: null,
-//     // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-//     setUser: () => {},
-// } as LoggedInUserContextType
-
 export const UserContext = createContext<LoggedInUserContextType | null>(null)
 
 type UserContextProviderProps = {
@@ -23,10 +17,6 @@ type UserContextProviderProps = {
 }
 
 export function UserContextProvider({ children }: UserContextProviderProps) {
-    // Get the value from session sotrage.
-    //const item = window.sessionStorage.getItem('loggedInUser')
-    //const sessionStorageValue = item ? (JSON.parse(item) as ILoggedInUser) : null
-
     const [user, setUser] = useState<ILoggedInUser | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
 
@@ -124,7 +114,5 @@ export const useUserContext = () => {
         throw new Error('useUserContext was used outside of its Provider')
     }
 
-    console.log('useUserContext:')
-    console.log(context.user)
     return context
 }

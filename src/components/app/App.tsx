@@ -15,6 +15,8 @@ import {
 } from 'react-router-dom'
 import PersonalInfo from 'pages/PersonalInfo'
 import ProtectedRoute from 'components/ui/ProtectedRoute'
+import { ThemeProvider } from 'contexts/ThemeContext'
+//import ToggleDarkMode from 'components/ui/ToggleDarkMode '
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -46,7 +48,9 @@ const router = createBrowserRouter(
 const App = () => {
     return (
         <ErrorBoundary>
-            <RouterProvider router={router} />;
+            <ThemeProvider>
+                <RouterProvider router={router} />;
+            </ThemeProvider>
         </ErrorBoundary>
     )
 }

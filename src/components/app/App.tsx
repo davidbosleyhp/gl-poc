@@ -1,7 +1,7 @@
 import React from 'react'
 import ErrorBoundary from 'components/error-boundary/ErrorBoundary'
 import MainLayout from 'layouts/MainLayout'
-import SitesPage from 'pages/SitesPage'
+import SitesPage from 'pages/site/SitesPage'
 import SitesError from 'components/sitelist/SitesError'
 import ProfileLayout from 'layouts/ProfileLayout'
 import Home from 'pages/Home'
@@ -16,7 +16,7 @@ import {
 import PersonalInfo from 'pages/PersonalInfo'
 import ProtectedRoute from 'components/ui/ProtectedRoute'
 import { ThemeProvider } from 'contexts/ThemeContext'
-//import ToggleDarkMode from 'components/ui/ToggleDarkMode '
+import SiteDetailPage from 'pages/site/SiteDetailPage'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -31,6 +31,18 @@ const router = createBrowserRouter(
                         element={
                             <ProtectedRoute>
                                 <SitesPage />
+                            </ProtectedRoute>
+                        }
+                        errorElement={<SitesError />}
+                    />
+                }
+                if (user)
+                {
+                    <Route
+                        path="sites/:id"
+                        element={
+                            <ProtectedRoute>
+                                <SiteDetailPage />
                             </ProtectedRoute>
                         }
                         errorElement={<SitesError />}

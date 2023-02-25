@@ -11,9 +11,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     const { user } = useUserContext()
 
     if (!user) {
-        console.log(1)
         return <AccessDenied />
-        //return null
     }
     return children
 }

@@ -15,7 +15,7 @@ const SiteList = () => {
                 const result = await axios(process.env.REACT_APP_API_URL + `/api/sites`, {
                     headers: { accepts: 'application/json' },
                 })
-                console.log(result.data)
+                //console.log(result.data)
                 setSites(result.data)
                 setIsLoading(false)
             }

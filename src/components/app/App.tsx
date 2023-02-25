@@ -1,7 +1,7 @@
 import React from 'react'
 import ErrorBoundary from 'components/error-boundary/ErrorBoundary'
 import MainLayout from 'layouts/MainLayout'
-import SitesPage from 'pages/SitesPage'
+import SitesPage from 'pages/site/SitesPage'
 import SitesError from 'components/sitelist/SitesError'
 import ProfileLayout from 'layouts/ProfileLayout'
 import Home from 'pages/Home'
@@ -14,7 +14,9 @@ import {
     RouterProvider,
 } from 'react-router-dom'
 import PersonalInfo from 'pages/PersonalInfo'
-import UserContextProvider from 'contexts/UserContext'
+import ProtectedRoute from 'components/ui/ProtectedRoute'
+import { ThemeProvider } from 'contexts/ThemeContext'
+import SiteDetailPage from 'pages/site/SiteDetailPage'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -22,7 +24,30 @@ const router = createBrowserRouter(
             <Route path="/" element={<MainLayout />}>
                 <Route path="/" element={<Home />} />
                 <Route path="about" element={<About />} />
-                <Route path="sites" element={<SitesPage />} errorElement={<SitesError />} />
+                if (user)
+                {
+                    <Route
+                        path="sites"
+                        element={
+                            <ProtectedRoute>
+                                <SitesPage />
+                            </ProtectedRoute>
+                        }
+                        errorElement={<SitesError />}
+                    />
+                }
+                if (user)
+                {
+                    <Route
+                        path="sites/:id"
+                        element={
+                            <ProtectedRoute>
+                                <SiteDetailPage />
+                            </ProtectedRoute>
+                        }
+                        errorElement={<SitesError />}
+                    />
+                }
             </Route>
             <Route path="profile" element={<ProfileLayout />}>
                 <Route path="personalInfo" element={<PersonalInfo />} />
@@ -34,11 +59,11 @@ const router = createBrowserRouter(
 
 const App = () => {
     return (
-        <UserContextProvider>
-            <ErrorBoundary>
+        <ErrorBoundary>
+            <ThemeProvider>
                 <RouterProvider router={router} />;
-            </ErrorBoundary>
-        </UserContextProvider>
+            </ThemeProvider>
+        </ErrorBoundary>
     )
 }
 

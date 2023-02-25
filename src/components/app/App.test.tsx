@@ -4,7 +4,7 @@ import App, { add, divide } from 'components/app/App'
 
 test('renders my sites', () => {
     render(<App />)
-    const linkElement = screen.getByText(/My Sites/i)
+    const linkElement = screen.getByText(/HPE/i)
     expect(linkElement).toBeInTheDocument()
 })
 

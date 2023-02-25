@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from 'react'
-
 export type ILoggedInUser = {
     id: number
     name: string
@@ -8,5 +6,8 @@ export type ILoggedInUser = {
 
 export type LoggedInUserContextType = {
     user: ILoggedInUser | null
-    setUser: Dispatch<SetStateAction<ILoggedInUser | null>>
+    //setUser: Dispatch<SetStateAction<ILoggedInUser | null>>
+    signIn: (user: ILoggedInUser) => Promise<void>
+    signOut: () => Promise<void>
+    loading: boolean
 }

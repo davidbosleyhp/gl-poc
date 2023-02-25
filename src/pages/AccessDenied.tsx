@@ -2,16 +2,16 @@ import { Page, PageHeader, Paragraph } from 'grommet'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const NotFound = () => {
+const AccessDenied = () => {
     return (
         <Page>
             <PageHeader
-                title="Page not found!"
+                title="Acccess Denied"
                 size="small"
-                a11yTitle="Page not found!"
+                a11yTitle="Access Denied"
                 pad="xsmall"
             />
-            <Paragraph>This page does not exist. Please contact administrator.</Paragraph>
+            <Paragraph>This page access is denied. Please login first.</Paragraph>
             <Paragraph>
                 Go to the <Link to="/">Homepage</Link>
             </Paragraph>
@@ -19,4 +19,4 @@ const NotFound = () => {
     )
 }
 
-export default NotFound
+export default AccessDenied

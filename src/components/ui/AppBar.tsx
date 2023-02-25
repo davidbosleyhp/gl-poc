@@ -1,13 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Anchor, Box, Button, Header, Heading, Nav } from 'grommet'
-import { Hpe, Logout, Moon, Sun, User } from 'grommet-icons'
-import { UserContext } from 'contexts/UserContext'
+import { Hpe, Logout, User } from 'grommet-icons'
+import { useUserContext } from 'contexts/UserContext'
 import { ILoggedInUser } from 'types/LoggedInUser'
-
-interface AppBarProps {
-    dark: boolean
-    setDark: React.Dispatch<React.SetStateAction<boolean>>
-}
+import { useNavigate } from 'react-router-dom'
+import ToggleDarkMode from './ToggleDarkMode '
 
 const loggedInUser: ILoggedInUser = {
     id: 1000,
@@ -15,17 +12,11 @@ const loggedInUser: ILoggedInUser = {
     thumbnail: '//s.gravatar.com/avatar/b226da5c619b18b44eb95c30be393953?s=80',
 }
 
-const AppBar: React.FC<AppBarProps> = ({ dark, setDark }) => {
-    const { user, setUser } = useContext(UserContext)
-    console.log('AppBar:')
-    console.log(user)
+const AppBar: React.FC = () => {
+    const { user, signIn, signOut } = useUserContext()
+    const navigate = useNavigate()
     return (
-        <Header
-            className="App-header"
-            background="brand"
-            pad={{ left: 'medium', right: 'small', vertical: 'small' }}
-            elevation="medium"
-        >
+        <Header className="App-header" background="brand" pad={{ left: 'medium', right: 'small' }}>
             <Anchor href="https://www.hpe.com" icon={<Hpe />} label="HPE" />
             <Box flex={false} direction="row" align="center" margin={{ left: 'small' }}>
                 <Heading
@@ -36,53 +27,38 @@ const AppBar: React.FC<AppBarProps> = ({ dark, setDark }) => {
                     My Sites
                 </Heading>
             </Box>
-            <Box direction="row" align="right" gap="small" pad="small">
-                <Nav direction="row" align="vertical">
-                    <Anchor label="Home" href="/" aria-label="Home" />
-                    <Anchor label="Sites" href="/sites" />
-                    <Anchor label="About" href="/about" />
+            <Box direction="row" gap="small" pad="small">
+                <Nav direction="row">
+                    <Anchor label="Home" href="/" aria-label="Home" alignSelf="center" />
+                    {user !== null ? <Anchor label="Sites" alignSelf="center" href="/sites" /> : ''}
+                    <Anchor label="About" href="/about" alignSelf="center" />
                     {user !== null ? (
-                        <Box direction="row" gap="small" pad="small">
-                            <Anchor color="white" href="/profile/personalInfo">
+                        <>
+                            <Anchor color="white" alignSelf="center" href="/profile/personalInfo">
                                 {user.name}
                             </Anchor>
                             <Button
                                 icon={<Logout />}
                                 tip="LogOut"
                                 label="LogOut"
-                                onClick={() =>
-                                    setUser({
-                                        id: 0,
-                                        name: '',
-                                        thumbnail: '',
-                                    })
-                                }
+                                onClick={() => {
+                                    signOut()
+                                    navigate('/')
+                                }}
                             />
-                        </Box>
+                        </>
                     ) : (
-                        <Box>
+                        <>
                             <Button
                                 icon={<User />}
                                 tip="Login"
                                 label="Login"
-                                onClick={() => setUser(loggedInUser)}
+                                onClick={() => signIn(loggedInUser)}
                             />
-                        </Box>
+                        </>
                     )}
                 </Nav>
-                <Button
-                    a11yTitle={dark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-                    icon={dark ? <Moon /> : <Sun />}
-                    onClick={() => setDark(!dark)}
-                    tip={{
-                        content: (
-                            <Box pad="small" round="small" background={dark ? 'dark-1' : 'light-3'}>
-                                {dark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-                            </Box>
-                        ),
-                        plain: true,
-                    }}
-                />
+                <ToggleDarkMode />
             </Box>
         </Header>
     )

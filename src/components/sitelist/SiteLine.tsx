@@ -7,9 +7,10 @@ interface SiteLineProps {
 }
 
 const SiteLine = (props: SiteLineProps) => {
+    const detailUrl: string = '/sites/' + props.site.id
     return (
         <Box pad="small" background={{ color: 'brand', opacity: true }} className="siteLine">
-            <Anchor href="/" label={props.site.name} />
+            <Anchor href={detailUrl} label={props.site.name} />
         </Box>
     )
 }

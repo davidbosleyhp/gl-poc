@@ -9,6 +9,7 @@ interface SiteDetailProps {
 const SiteDetail = (props: SiteDetailProps) => {
     return (
         <Box
+            data-testid="divSiteDetail"
             pad="small"
             background={{ color: 'brand', opacity: true }}
             className="site-detail"

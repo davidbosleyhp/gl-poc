@@ -3,7 +3,6 @@ import { Page, PageHeader } from 'grommet'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { Site } from 'types/Site'
 
 function SiteDetailPage() {
     const params = useParams()

@@ -39,7 +39,7 @@ const AppBar: React.FC = () => {
                             </Anchor>
                             <Button
                                 icon={<Logout />}
-                                margin="medium"
+                                margin={{ left: 'medium' }}
                                 size="small"
                                 tip="LogOut"
                                 label="LogOut"

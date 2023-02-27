@@ -10,11 +10,11 @@ function SiteDetailPage() {
     const [detail, setDetail] = useState(undefined)
     useEffect(() => {
         const getSite = async () => {
-            const result = await axios(process.env.REACT_APP_API_URL + `/api/sites`, {
+            const result = await axios(process.env.REACT_APP_API_URL + `/api/sites/` + params.id, {
                 headers: { accepts: 'application/json' },
             })
-            const detail = result.data.find((x: Site) => x.id == Number(params.id))
-            setDetail(detail)
+            //const detail = result.data.find((x: Site) => x.id == Number(params.id))
+            setDetail(result.data)
         }
         getSite()
     })

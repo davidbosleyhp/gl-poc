@@ -17,6 +17,7 @@ import PersonalInfo from 'pages/PersonalInfo'
 import ProtectedRoute from 'components/ui/ProtectedRoute'
 import { ThemeProvider } from 'contexts/ThemeContext'
 import SiteDetailPage from 'pages/site/SiteDetailPage'
+import { UserContextProvider } from 'contexts/UserContext'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -61,7 +62,9 @@ const App = () => {
     return (
         <ErrorBoundary>
             <ThemeProvider>
-                <RouterProvider router={router} />;
+                <UserContextProvider>
+                    <RouterProvider router={router} />;
+                </UserContextProvider>
             </ThemeProvider>
         </ErrorBoundary>
     )

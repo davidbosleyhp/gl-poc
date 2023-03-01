@@ -39,6 +39,8 @@ const AppBar: React.FC = () => {
                             </Anchor>
                             <Button
                                 icon={<Logout />}
+                                margin={{ left: 'medium' }}
+                                size="small"
                                 tip="LogOut"
                                 label="LogOut"
                                 onClick={() => {
@@ -50,6 +52,7 @@ const AppBar: React.FC = () => {
                     ) : (
                         <>
                             <Button
+                                size="small"
                                 icon={<User />}
                                 tip="Login"
                                 label="Login"
@@ -58,7 +61,7 @@ const AppBar: React.FC = () => {
                         </>
                     )}
                 </Nav>
-                <ToggleDarkMode />
+                {user !== null ? <ToggleDarkMode /> : ''}
             </Box>
         </Header>
     )

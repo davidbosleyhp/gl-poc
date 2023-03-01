@@ -9,7 +9,8 @@ import Breadcrumbs from 'components/ui/Breadcrumbs'
 import { useThemeContext } from 'contexts/ThemeContext'
 
 const MainLayout = () => {
-    const { darkMode } = useThemeContext()
+    const { darkMode, setShowToggle } = useThemeContext()
+    if (setShowToggle !== undefined) setShowToggle(true)
 
     return (
         <Grommet

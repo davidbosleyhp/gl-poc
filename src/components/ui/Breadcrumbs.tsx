@@ -8,6 +8,8 @@ const routes: BreadcrumbsRoute[] = [
     { path: '/about', breadcrumb: 'About' },
     { path: '/sites', breadcrumb: 'Sites' },
     { path: '/sites/:id', breadcrumb: 'Site Detail' },
+    { path: '/profile', breadcrumb: 'Profile' },
+    { path: '/profile/personalInfo', breadcrumb: 'Personal Info' },
     { path: '*', breadcrumb: 'Page Not Found' },
 ]
 

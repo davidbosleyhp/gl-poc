@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import App, { add, divide } from 'components/app/App'
 
-test('renders my sites', () => {
+test('App: renders my sites', () => {
     render(<App />)
     const linkElement = screen.getByText(/HPE/i)
     expect(linkElement).toBeInTheDocument()

@@ -4,16 +4,16 @@ import MainLayout from 'layouts/MainLayout'
 import SitesPage from 'pages/site/SitesPage'
 import SitesError from 'components/sitelist/SitesError'
 import ProfileLayout from 'layouts/ProfileLayout'
-import Home from 'pages/Home'
-import About from 'pages/About'
-import NotFound from 'pages/NotFound'
+import Home from 'pages/home/Home'
+import About from 'pages/about/About'
+import NotFound from 'pages/notfound/NotFound'
 import {
     createBrowserRouter,
     createRoutesFromElements,
     Route,
     RouterProvider,
 } from 'react-router-dom'
-import PersonalInfo from 'pages/PersonalInfo'
+import PersonalInfo from 'pages/personalInfo/PersonalInfo'
 import ProtectedRoute from 'components/ui/ProtectedRoute'
 import { ThemeProvider } from 'contexts/ThemeContext'
 import SiteDetailPage from 'pages/site/SiteDetailPage'

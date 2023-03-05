@@ -2,7 +2,7 @@ import { Box, FormField, Paragraph, Text } from 'grommet'
 import React from 'react'
 import { Site } from 'types/Site'
 
-interface SiteDetailProps {
+export interface SiteDetailProps {
     detail: Site | undefined
 }
 

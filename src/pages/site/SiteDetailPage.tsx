@@ -6,7 +6,6 @@ import SiteDetail from 'components/sitelist/SiteDetail'
 
 function SiteDetailPage() {
     const params = useParams()
-    //console.log(params)
     const [detail, setDetail] = useState(undefined)
 
     useEffect(() => {

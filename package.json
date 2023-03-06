@@ -44,6 +44,20 @@
         "resetMocks": true,
         "transformIgnorePatterns": [
             "node_modules/(?!axios)"
+        ],
+        "collectCoverageFrom": [
+            "./src/**/*.{ts,tsx}",
+            "!src/**/*.d.ts",
+            "!**/node_modules/**"
+        ],
+        "coverageThreshold": {
+            "global": {
+                "lines": 70
+            }
+        },
+        "coveragePathIgnorePatterns": [
+            "<rootDir>/styles/",
+            "<rootDir>/src/types/"
         ]
     },
     "browserslist": {

@@ -22,21 +22,6 @@ describe('SiteDetailPage', () => {
         jest.clearAllMocks()
     })
 
-    // jest.doMock('components/sitelist/SiteDetail', (): { SiteDetail: typeof SiteDetail } => ({
-    //     SiteDetail: (props: SiteDetailProps) => {
-    //         const mockSitedetailData: Site = {
-    //             id: 11,
-    //             name: 'TestSite',
-    //             geolocation: 'geo',
-    //             altitude: 111,
-    //             seismic_zone: 1111,
-    //         }
-
-    //         props.detail = mockSitedetailData
-    //         return <div data-testid={'sitedetail_' + props.detail.id} />
-    //     },
-    // }))
-
     test('SiteDetailPage: Test div exist for divSiteDetailPage', async () => {
         jest.spyOn(Router, 'useParams').mockReturnValue({ id: '1' })
         render(

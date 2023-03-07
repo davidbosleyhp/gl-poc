@@ -1,8 +1,7 @@
 import React from 'react'
-import { Grommet, Footer, Main, Text, grommet, Box } from 'grommet'
-//import { hpe } from 'grommet-theme-hpe'
+import { Grommet, Footer, Main, Text, Box } from 'grommet'
 import { Outlet } from 'react-router-dom'
-
+//import { grommet } from 'grommet-theme-hpe'
 //components
 //pages
 import SideBar from 'components/ui/SideBar'
@@ -10,13 +9,13 @@ import AppBar from 'components/ui/AppBar'
 import { useThemeContext } from 'contexts/ThemeContext'
 import Breadcrumbs from 'components/ui/Breadcrumbs'
 
-export default function MainLayout() {
+export default function ProfileLayout() {
     const { darkMode, setShowToggle } = useThemeContext()
     if (setShowToggle !== undefined) setShowToggle(false)
     return (
         <Grommet
             className="profile-layout"
-            theme={grommet}
+            //theme={grommet}
             full
             themeMode={darkMode ? 'dark' : 'light'}
             background={darkMode ? 'datawave-multi-1' : 'datawave-white-1'}

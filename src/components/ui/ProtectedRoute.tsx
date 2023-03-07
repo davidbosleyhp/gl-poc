@@ -1,7 +1,7 @@
 import { useUserContext } from 'contexts/UserContext'
 import React from 'react'
 //import { Navigate } from 'react-router-dom'
-import AccessDenied from 'pages/AccessDenied'
+import AccessDenied from 'pages/accessdenied/AccessDenied'
 
 type ProtectedRouteProps = {
     children: JSX.Element

@@ -23,11 +23,11 @@ const SiteList = () => {
     })
 
     return isLoading ? (
-        <Box>
+        <Box className="site-lists">
             <Loader />
         </Box>
     ) : (
-        <Box gap="xxxsmall" border={{ side: 'between', size: 'small' }}>
+        <Box className="site-lists" gap="xxxsmall" border={{ side: 'between', size: 'small' }}>
             {sites.map((site: Site) => (
                 <Box
                     key={site.id.toString()}

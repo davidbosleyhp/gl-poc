@@ -44,6 +44,20 @@
         "resetMocks": true,
         "transformIgnorePatterns": [
             "node_modules/(?!axios)"
+        ],
+        "collectCoverageFrom": [
+            "./src/**/*.{ts,tsx}",
+            "!src/**/*.d.ts",
+            "!**/node_modules/**"
+        ],
+        "coverageThreshold": {
+            "global": {
+                "lines": 70
+            }
+        },
+        "coveragePathIgnorePatterns": [
+            "<rootDir>/styles/",
+            "<rootDir>/src/types/"
         ]
     },
     "browserslist": {
@@ -70,6 +84,7 @@
         "eslint-plugin-react": "^7.32.2",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-sonarjs": "^0.18.0",
+        "msw": "^1.1.0",
         "prettier": "^2.8.3"
     },
     "overrides": {

@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { Site } from 'types/Site'
 import SiteDetail from './SiteDetail'
@@ -57,5 +57,11 @@ describe('SiteDetail', () => {
         expect(divElementId).toBeInTheDocument()
         const spanElementId = screen.getByText('1111')
         expect(spanElementId).toBeInTheDocument()
+    })
+
+    test('SiteDetail: Test that site details when site data not found', () => {
+        render(<SiteDetail detail={undefined} />)
+        const divElementId = screen.getByText('Site detail not found')
+        expect(divElementId).toBeInTheDocument()
     })
 })

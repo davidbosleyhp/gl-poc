@@ -4,7 +4,7 @@ import { Hpe, Logout, User } from 'grommet-icons'
 import { useUserContext } from 'contexts/UserContext'
 import { ILoggedInUser } from 'types/LoggedInUser'
 import { useNavigate } from 'react-router-dom'
-import ToggleDarkMode from './ToggleDarkMode '
+import ToggleDarkMode from './ToggleDarkMode'
 
 const loggedInUser: ILoggedInUser = {
     id: 1000,
